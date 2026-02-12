@@ -1,0 +1,6 @@
+{
+  "openaiApiKey": "",
+  "openaiBaseUrl": "https://api.openai.com",
+  "geminiApiKey": "",
+  "anthropicApiKey": ""
+}

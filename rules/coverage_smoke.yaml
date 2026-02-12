@@ -1,0 +1,33 @@
+level: smoke
+description: >
+  最低限の動作確認。主要な正常系パスのみをカバーする。
+  リリース前の最終確認や、デプロイ直後のヘルスチェックに使用。
+
+constraints:
+  max_steps_per_case: 5
+
+must_include:
+  - 主要な正常系フロー（ハッピーパス）
+  - 必須入力項目の基本バリデーション
+  - 画面遷移の基本動線
+
+avoid:
+  - 境界値テスト
+  - 異常系・エラーハンドリングの網羅
+  - パフォーマンス・負荷テスト
+  - 細かいUI/UXの検証
+  - 権限・ロールの組み合わせ
+
+recommended_tags:
+  - normal
+  - semi-normal
+  - abnormal
+  - smoke
+  - happy-path
+  - basic-validation
+
+priority_policy:
+  default: High
+  rules:
+    - condition: "主要フロー"
+      priority: High

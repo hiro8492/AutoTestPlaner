@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+backend/dist/
+ui/out/
+ui/.next/
+
+# TypeScript
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code
+.claude/
+
+# Prisma
+backend/prisma/*.db
+backend/prisma/*.db-journal
+
+# Temporary files
+tmp_test/

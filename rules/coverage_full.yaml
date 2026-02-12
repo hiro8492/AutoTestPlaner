@@ -1,0 +1,53 @@
+level: full
+description: >
+  網羅的なテスト。正常系・異常系・境界値・組み合わせ・
+  非機能要件を含む包括的なテスト設計。
+
+constraints:
+  max_steps_per_case: 12
+
+must_include:
+  - 正常系フロー（ハッピーパス）全パターン
+  - 異常系（バリデーションエラー、不正入力、不正操作）
+  - 境界値テスト（最小値、最大値、空文字、上限文字数、特殊文字）
+  - 状態遷移テスト（全ステータス遷移パス）
+  - 権限・ロール別テスト
+  - 組み合わせテスト（ペアワイズ以上）
+  - データ整合性テスト（CRUD全操作後の状態確認）
+  - 同時操作・排他制御
+  - エラーメッセージの内容確認
+  - 画面表示・レイアウトの検証
+
+avoid:
+  - 自動化済みの単体テスト項目の重複
+  - テスト環境でのみ発生する問題
+
+recommended_tags:
+  - normal
+  - semi-normal
+  - abnormal
+  - full
+  - happy-path
+  - validation
+  - boundary
+  - state-transition
+  - error-handling
+  - permission
+  - combination
+  - concurrency
+  - data-integrity
+  - ui-layout
+
+priority_policy:
+  default: Medium
+  rules:
+    - condition: "主要な正常系フロー"
+      priority: High
+    - condition: "データ破損・セキュリティに関わる異常系"
+      priority: High
+    - condition: "権限チェック・認証認可"
+      priority: High
+    - condition: "UIの表示崩れ・軽微なUX問題"
+      priority: Low
+    - condition: "特殊文字・稀なエッジケース"
+      priority: Low

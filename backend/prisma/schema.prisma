@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Profile {
+  id                   Int          @id @default(autoincrement())
+  name                 String
+  terminologyText      String       @default("")
+  styleText            String       @default("")
+  customSystemPrompt   String       @default("")
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+  designJobs           DesignJob[]
+}
+
+model DesignJob {
+  id                  String       @id @default(uuid())
+  profileId           Int
+  profile             Profile      @relation(fields: [profileId], references: [id])
+  suiteName           String
+  coverageLevel       String
+  elementStepsText    String
+  specText            String       @default("")
+  rulesSnapshotText   String       @default("")
+  llmModelName        String       @default("")
+  llmRequestJson      String       @default("")
+  llmResponseJson     String       @default("")
+  status              String       @default("success")
+  createdAt           DateTime     @default(now())
+  irVersions          IrVersion[]
+}
+
+model IrVersion {
+  id          String    @id @default(uuid())
+  designId    String
+  designJob   DesignJob @relation(fields: [designId], references: [id])
+  versionNo   Int       @default(1)
+  irJson      String
+  editedBy    String    @default("user")
+  createdAt   DateTime  @default(now())
+}

@@ -1,0 +1,41 @@
+level: regression
+description: >
+  変更による既存機能への影響を検出するためのテスト。
+  正常系に加え、主要な異常系・境界値をカバーする。
+
+constraints:
+  max_steps_per_case: 8
+
+must_include:
+  - 正常系フロー（ハッピーパス）
+  - 主要な異常系（バリデーションエラー、不正入力）
+  - 境界値テスト（最小値、最大値、空文字、上限文字数）
+  - 状態遷移テスト（ステータス変更、権限切替）
+  - 必須項目・任意項目の組み合わせ
+  - データの永続化確認（保存後の再表示）
+
+avoid:
+  - パフォーマンス・負荷テスト
+  - 全組み合わせの網羅（ペアワイズで十分）
+  - インフラ層のテスト
+
+recommended_tags:
+  - normal
+  - semi-normal
+  - abnormal
+  - regression
+  - happy-path
+  - validation
+  - boundary
+  - state-transition
+  - error-handling
+
+priority_policy:
+  default: Medium
+  rules:
+    - condition: "主要な正常系フロー"
+      priority: High
+    - condition: "データ破損・セキュリティに関わる異常系"
+      priority: High
+    - condition: "UIの表示崩れ・軽微なUX問題"
+      priority: Low
