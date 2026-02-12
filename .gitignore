@@ -25,6 +25,9 @@ Thumbs.db
 # Claude Code
 .claude/
 
+# LLM settings (API keys)
+backend/llm-settings.json
+
 # Prisma
 backend/prisma/*.db
 backend/prisma/*.db-journal
